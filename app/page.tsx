@@ -29,6 +29,7 @@ export default function Home() {
               </span>
               Available for new projects
             </div>
+
             <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-[1.1] mb-6">
               We Build Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">Masterpieces</span>
             </h1>
@@ -133,3 +134,10 @@ export default function Home() {
     </>
   );
 }
+
+
+
+
+
+
+

@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTheme } from 'next-themes';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import Button from './Button';
-import { useTheme } from './ThemeProvider';
 
 const navLinks = [
   { id: '/', label: 'Home' },
@@ -19,29 +18,41 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const pathname = usePathname();
+
+  // Handle hydration mismatch
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+  if (theme === 'system') {
+    // If system, check current effective theme
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(systemDark ? 'light' : 'dark');
+  } else {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  }
+};
+
+  // Determine if dark mode is active
+  const isDark = theme === 'dark';
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full overflow-hidden bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-            <Image 
-              src="/images/w-systic-logo.png"
-              width={40}
-              height={40}
-              alt="Systic Studio logo"
-              className="object-cover w-full h-full"
-            />
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-emerald-500/30 group-hover:scale-105 transition-transform">
+            S
           </div>
-          <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+          <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
             Systic<span className="text-emerald-500">.</span>
           </span>
         </Link>
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
@@ -58,15 +69,16 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Actions */}
         <div className="hidden md:flex items-center gap-4">
-          <button 
-            onClick={toggleTheme}
-            className="p-2 rounded-full text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+          {mounted && (
+            <button 
+              onClick={toggleTheme}
+              className="p-2 rounded-full text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          )}
           <Link href="/contact">
             <Button className="text-sm py-2 px-5">
               Contact Us
@@ -74,7 +86,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
         <button 
           className="md:hidden p-2 text-slate-600 dark:text-slate-300"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -83,7 +94,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -117,12 +127,14 @@ export default function Navbar() {
               <hr className="border-slate-100 dark:border-slate-800 my-2" />
               <div className="flex items-center justify-between">
                 <span className="text-slate-600 dark:text-slate-400">Theme</span>
-                <button 
-                  onClick={toggleTheme}
-                  className="p-2 rounded-full text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                >
-                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
+                {mounted && (
+                  <button 
+                    onClick={toggleTheme}
+                    className="p-2 rounded-full text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  >
+                    {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                  </button>
+                )}
               </div>
             </div>
           </motion.div>

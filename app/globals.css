@@ -6,6 +6,15 @@
 @tailwind utilities;
 
 @layer base {
+
+  :root {
+    @apply bg-slate-50;         /* light mode default */
+  }
+
+  .dark {
+    @apply bg-slate-950;      /* dark mode root/background/text */
+  }
+
   html {
     scroll-behavior: smooth;
   }
