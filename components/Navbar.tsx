@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -44,14 +46,26 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-emerald-500/30 group-hover:scale-105 transition-transform">
-            S
-          </div>
-          <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
-            Systic<span className="text-emerald-500">.</span>
-          </span>
-        </Link>
+        
+        <Link href="/" className="flex items-center gap-3 group">
+            <div className="w-12 h-12 rounded-full overflow-hidden bg-white dark:bg-slate-800 border-2 border-emerald-500/20 dark:border-emerald-500/30 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+            
+              <Image 
+                src={'/images/w-systic-logo.png'}
+                width={35}
+                height={35}
+                alt='logo'
+                className='object-cover w-full h-full'
+                priority
+              />
+
+            </div>
+            
+            <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+              Systic<span className="text-emerald-500">.</span>
+            </span>
+
+          </Link>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
