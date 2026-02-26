@@ -7,7 +7,7 @@ interface ButtonProps {
   onClick?: () => void;
   icon?: React.ElementType;
   type?: 'button' | 'submit';
-  disabled?: boolean; // ✅ ADD THIS LINE
+  disabled?: boolean; // ✅ MUST HAVE THIS
 }
 
 export default function Button({ 
@@ -17,9 +17,9 @@ export default function Button({
   onClick, 
   icon: Icon,
   type = 'button',
-  disabled // ✅ ADD THIS LINE
+  disabled // ✅ MUST HAVE THIS
 }: ButtonProps) {
-  const baseStyle = "px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100";
+  const baseStyle = "px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed";
   const variants = {
     primary: "bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/20",
     secondary: "bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100",
@@ -30,7 +30,7 @@ export default function Button({
     <button 
       type={type} 
       onClick={onClick} 
-      disabled={disabled} // ✅ ADD THIS LINE
+      disabled={disabled} // ✅ MUST HAVE THIS
       className={`${baseStyle} ${variants[variant]} ${className}`}
     >
       {children}
