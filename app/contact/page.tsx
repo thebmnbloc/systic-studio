@@ -209,6 +209,7 @@ export default function Contact() {
                   'Send Message'
                 )}
               </Button>
+              
             </form>
           </div>
         </div>
