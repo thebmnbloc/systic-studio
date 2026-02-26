@@ -195,7 +195,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Submit Button 
               <Button 
                 type="submit" 
                 className="w-full justify-center"
@@ -210,23 +209,8 @@ export default function Contact() {
                   'Send Message'
                 )}
               </Button>
-              */}
 
-              <button
-                type="submit"
-                disabled={status === 'loading'}
-                className="w-full justify-center px-6 py-3 rounded-full font-medium bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-600 transition-all duration-300 flex items-center gap-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {status === 'loading' ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  'Send Message'
-                )}
-              </button>
-              
+           
             </form>
           </div>
         </div>
