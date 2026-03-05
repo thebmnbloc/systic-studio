@@ -7,8 +7,10 @@ import Button from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
 import ServiceCard from '@/components/ServiceCard';
 import PricingCard from '@/components/PricingCard';
+import ThemeProvider from '@/components/ThemeProvider';
 
 export default function Home() {
+
   return (
     <>
       {/* Hero Section */}
@@ -131,6 +133,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
     </>
   );
 }
