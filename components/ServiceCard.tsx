@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   LayoutDashboard, 
@@ -9,13 +8,19 @@ import {
   Code2, 
   Zap, 
   Shield,
-  Circle, // ← Add fallback icon
+  Circle,
   type LucideIcon
 } from 'lucide-react';
 
-type Icon = 'LayoutDashboard' | 'Globe' | 'Smartphone' | 'Code2' | 'Zap' | 'Shield';
+type IconName = 
+  | 'LayoutDashboard' 
+  | 'Globe' 
+  | 'Smartphone' 
+  | 'Code2' 
+  | 'Zap' 
+  | 'Shield';
 
-const iconMap: Record<any, LucideIcon> = {
+const iconMap: Record<IconName, LucideIcon> = {
   LayoutDashboard,
   Globe,
   Smartphone,
@@ -25,15 +30,13 @@ const iconMap: Record<any, LucideIcon> = {
 };
 
 interface ServiceCardProps {
-  icon: any;
+  iconName: IconName;  // ← Changed from 'icon' to 'iconName'
   title: string;
   description: string;
 }
 
-
-export default function ServiceCard({ icon, title, description  }: ServiceCardProps) {
-  // Use fallback if icon not found
-  const Icon = iconMap[icon] || Circle;
+export default function ServiceCard({ iconName, title, description }: ServiceCardProps) {
+  const Icon = iconMap[iconName] ?? Circle;
 
   return (
     <motion.div 
