@@ -15,7 +15,7 @@ import {
 
 type IconName = 'LayoutDashboard' | 'Globe' | 'Smartphone' | 'Code2' | 'Zap' | 'Shield';
 
-const iconMap: Record<IconName, LucideIcon> = {
+const iconMap: Record<any, LucideIcon> = {
   LayoutDashboard,
   Globe,
   Smartphone,
@@ -25,7 +25,7 @@ const iconMap: Record<IconName, LucideIcon> = {
 };
 
 interface ServiceCardProps {
-  iconName: IconName;
+  iconName: any;
   title: string;
   description: string;
 }
