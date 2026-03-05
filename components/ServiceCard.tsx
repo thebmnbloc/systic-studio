@@ -9,11 +9,13 @@ import {
   Code2, 
   Zap, 
   Shield,
-  LucideIcon
+  Circle, // ← Add fallback icon
+  type LucideIcon
 } from 'lucide-react';
 
-// Map string names to actual icon components
-const iconMap: Record<string, LucideIcon> = {
+type IconName = 'LayoutDashboard' | 'Globe' | 'Smartphone' | 'Code2' | 'Zap' | 'Shield';
+
+const iconMap: Record<IconName, LucideIcon> = {
   LayoutDashboard,
   Globe,
   Smartphone,
@@ -23,13 +25,14 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 interface ServiceCardProps {
-  iconName: string;
+  iconName: IconName;
   title: string;
   description: string;
 }
 
 export default function ServiceCard({ iconName, title, description }: ServiceCardProps) {
-  const Icon = iconMap[iconName] || LayoutDashboard; // fallback
+  // Use fallback if icon not found
+  const Icon = iconMap[iconName] || Circle;
 
   return (
     <motion.div 
@@ -40,9 +43,7 @@ export default function ServiceCard({ iconName, title, description }: ServiceCar
         <Icon className="text-emerald-600 dark:text-emerald-400" size={28} />
       </div>
       <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{title}</h3>
-      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-        {description}
-      </p>
+      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{description}</p>
     </motion.div>
   );
 }
