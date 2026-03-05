@@ -110,17 +110,17 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard 
-              iconName={LayoutDashboard}
+              icon={LayoutDashboard}
               title="Admin Dashboards"
               description="Complex data visualization and management systems built with React, Tailwind, and robust state management."
             />
             <ServiceCard 
-              iconName={Globe}
+              icon={Globe}
               title="Web Applications"
               description="Scalable, secure, and high-performance web apps using Next.js, Node.js, and modern cloud infrastructure."
             />
             <ServiceCard 
-              iconName={Smartphone}
+              icon={Smartphone}
               title="Landing Pages"
               description="Conversion-optimized, blazing-fast landing pages designed to turn visitors into loyal customers."
             />

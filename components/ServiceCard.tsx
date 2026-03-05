@@ -13,7 +13,7 @@ import {
   type LucideIcon
 } from 'lucide-react';
 
-type IconName = 'LayoutDashboard' | 'Globe' | 'Smartphone' | 'Code2' | 'Zap' | 'Shield';
+type Icon = 'LayoutDashboard' | 'Globe' | 'Smartphone' | 'Code2' | 'Zap' | 'Shield';
 
 const iconMap: Record<any, LucideIcon> = {
   LayoutDashboard,
@@ -25,14 +25,15 @@ const iconMap: Record<any, LucideIcon> = {
 };
 
 interface ServiceCardProps {
-  iconName: any;
+  icon: any;
   title: string;
   description: string;
 }
 
-export default function ServiceCard({ iconName, title, description }: ServiceCardProps) {
+
+export default function ServiceCard({ icon, title, description  }: ServiceCardProps) {
   // Use fallback if icon not found
-  const Icon = iconMap[iconName] || Circle;
+  const Icon = iconMap[icon] || Circle;
 
   return (
     <motion.div 
