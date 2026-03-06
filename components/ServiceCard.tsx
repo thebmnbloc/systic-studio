@@ -12,7 +12,7 @@ import {
   type LucideIcon
 } from 'lucide-react';
 
-type IconName = 
+type IconName =
   | 'LayoutDashboard' 
   | 'Globe' 
   | 'Smartphone' 
@@ -20,7 +20,7 @@ type IconName =
   | 'Zap' 
   | 'Shield';
 
-const iconMap: Record<any, LucideIcon> = {
+const iconMap: Record<IconName, LucideIcon> = {
   LayoutDashboard,
   Globe,
   Smartphone,
@@ -30,7 +30,7 @@ const iconMap: Record<any, LucideIcon> = {
 };
 
 interface ServiceCardProps {
-  iconName: any;  
+  iconName: IconName;  
   title: string;
   description: string;
 }

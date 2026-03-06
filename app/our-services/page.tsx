@@ -1,13 +1,22 @@
 import SectionHeading from '@/components/SectionHeading';
 import ServiceCard from '@/components/ServiceCard';
+import type { IconName } from '@/components/ServiceCard'; // Import the type
 
 export const metadata = {
   title: 'Services | Systic Studio',
   description: 'Comprehensive software development solutions tailored to your business needs.',
 };
 
+// Define the type for services
+interface Service {
+  iconName: IconName;
+  title: string;
+  description: string;
+}
+
 export default function Services() {
-  const services = [
+  // Explicitly type the array
+  const services: Service[] = [
     {
       iconName: 'LayoutDashboard',
       title: 'Admin Dashboards',
