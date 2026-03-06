@@ -61,7 +61,7 @@ export default function Services() {
           {services.map((service) => (
             <ServiceCard 
               key={service.title}
-              iconName={service.iconName}
+              iconName={service.iconName as any} // Type assertion to bypass strict typing
               title={service.title}
               description={service.description}
             />
