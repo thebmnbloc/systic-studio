@@ -1,13 +1,11 @@
 import SectionHeading from '@/components/SectionHeading';
-import ServiceCard from '@/components/ServiceCard';
-import type { IconName } from '@/components/ServiceCard'; // Import the type
+import ServiceCard, { type IconName } from '@/components/ServiceCard';
 
 export const metadata = {
   title: 'Services | Systic Studio',
   description: 'Comprehensive software development solutions tailored to your business needs.',
 };
 
-// Define the type for services
 interface Service {
   iconName: IconName;
   title: string;
@@ -15,7 +13,6 @@ interface Service {
 }
 
 export default function Services() {
-  // Explicitly type the array
   const services: Service[] = [
     {
       iconName: 'LayoutDashboard',
