@@ -30,13 +30,13 @@ const iconMap: Record<IconName, LucideIcon> = {
 };
 
 interface ServiceCardProps {
-  iconName: IconName;  // ← Changed from 'icon' to 'iconName'
+  iconName: string;  
   title: string;
   description: string;
 }
 
 export default function ServiceCard({ iconName, title, description }: ServiceCardProps) {
-  const Icon = iconMap[iconName] ?? Circle;
+  const Icon = iconMap[iconName as IconName] ?? Circle;
 
   return (
     <motion.div 
