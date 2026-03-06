@@ -12,7 +12,7 @@ import {
   type LucideIcon
 } from 'lucide-react';
 
-export type IconName =
+type IconName = 
   | 'LayoutDashboard' 
   | 'Globe' 
   | 'Smartphone' 
@@ -30,13 +30,14 @@ const iconMap: Record<IconName, LucideIcon> = {
 };
 
 interface ServiceCardProps {
-  iconName: IconName;  
+  iconName: string;  // ← CHANGED: Accept any string
   title: string;
   description: string;
 }
 
 export default function ServiceCard({ iconName, title, description }: ServiceCardProps) {
-  const Icon = iconMap[iconName] ?? Circle;
+  // Type assertion needed since iconName is now string
+  const Icon = iconMap[iconName as IconName] ?? Circle;
 
   return (
     <motion.div 
