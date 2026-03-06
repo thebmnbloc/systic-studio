@@ -1,50 +1,45 @@
 import SectionHeading from '@/components/SectionHeading';
-import ServiceCard, { type IconName } from '@/components/ServiceCard';
+import ServiceCard from '@/components/ServiceCard';
 
 export const metadata = {
   title: 'Services | Systic Studio',
   description: 'Comprehensive software development solutions tailored to your business needs.',
 };
 
-interface Service {
-  iconName: IconName;
-  title: string;
-  description: string;
-}
-
 export default function Services() {
-  const services: Service[] = [
+  // Use 'as const' to make TypeScript treat these as literal types, not strings
+  const services = [
     {
-      iconName: 'LayoutDashboard',
+      iconName: 'LayoutDashboard' as const,
       title: 'Admin Dashboards',
       description: 'Complex data visualization and management systems built with React, Tailwind, and robust state management. Perfect for SaaS platforms and internal tools.',
     },
     {
-      iconName: 'Globe',
+      iconName: 'Globe' as const,
       title: 'Web Applications',
       description: 'Scalable, secure, and high-performance web apps using Next.js, Node.js, and modern cloud infrastructure. From MVPs to enterprise solutions.',
     },
     {
-      iconName: 'Smartphone',
+      iconName: 'Smartphone' as const,
       title: 'Landing Pages',
       description: 'Conversion-optimized, blazing-fast landing pages designed to turn visitors into loyal customers. SEO-friendly and performance-focused.',
     },
     {
-      iconName: 'Code2',
+      iconName: 'Code2' as const,
       title: 'API Development',
       description: 'RESTful and GraphQL API design and integration to power your frontend experiences seamlessly. Secure, documented, and scalable.',
     },
     {
-      iconName: 'Zap',
+      iconName: 'Zap' as const,
       title: 'Performance Audit',
       description: 'We analyze and optimize your existing codebase for speed, SEO, and accessibility standards. Improve your Core Web Vitals scores.',
     },
     {
-      iconName: 'Shield',
+      iconName: 'Shield' as const,
       title: 'Enterprise Solutions',
       description: 'Secure, compliant software solutions tailored for large-scale organizational needs and workflows. SSO, audit logs, and role-based access.',
     },
-  ];
+  ] as const; // ← This locks the entire array as readonly with literal types
 
   return (
     <section className="py-24 bg-slate-50 dark:bg-slate-950">
