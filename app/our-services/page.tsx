@@ -6,8 +6,17 @@ export const metadata = {
   description: 'Comprehensive software development solutions tailored to your business needs.',
 };
 
+// Define valid icon names
+type IconName = 'LayoutDashboard' | 'Globe' | 'Smartphone' | 'Code2' | 'Zap' | 'Shield';
+
+interface Service {
+  iconName: IconName;
+  title: string;
+  description: string;
+}
+
 export default function Services() {
-  const services = [
+  const services: Service[] = [
     {
       iconName: 'LayoutDashboard',
       title: 'Admin Dashboards',

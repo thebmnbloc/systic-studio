@@ -12,7 +12,8 @@ import {
   type LucideIcon
 } from 'lucide-react';
 
-type IconName = 
+// Export the type so page.tsx can use it
+export type IconName = 
   | 'LayoutDashboard' 
   | 'Globe' 
   | 'Smartphone' 
@@ -30,14 +31,13 @@ const iconMap: Record<IconName, LucideIcon> = {
 };
 
 interface ServiceCardProps {
-  iconName: string;  // ← CHANGED: Accept any string
+  iconName: IconName;
   title: string;
   description: string;
 }
 
 export default function ServiceCard({ iconName, title, description }: ServiceCardProps) {
-  // Type assertion needed since iconName is now string
-  const Icon = iconMap[iconName as IconName] ?? Circle;
+  const Icon = iconMap[iconName] ?? Circle;
 
   return (
     <motion.div 
