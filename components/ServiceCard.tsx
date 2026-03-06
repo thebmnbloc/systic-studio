@@ -20,7 +20,7 @@ type IconName =
   | 'Zap' 
   | 'Shield';
 
-const iconMap: Record<IconName, LucideIcon> = {
+const iconMap: Record<any, LucideIcon> = {
   LayoutDashboard,
   Globe,
   Smartphone,
@@ -30,13 +30,13 @@ const iconMap: Record<IconName, LucideIcon> = {
 };
 
 interface ServiceCardProps {
-  iconName: string;  
+  iconName: any;  
   title: string;
   description: string;
 }
 
 export default function ServiceCard({ iconName, title, description }: ServiceCardProps) {
-  const Icon = iconMap[iconName as IconName] ?? Circle;
+  const Icon = iconMap[iconName] ?? Circle;
 
   return (
     <motion.div 
